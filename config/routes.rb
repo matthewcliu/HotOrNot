@@ -1,4 +1,12 @@
 Hotornot::Application.routes.draw do
+
+  #resources :pictures
+  resources :upload
+  #resources :pictures
+  
+  match 'upload/picture/:id' => 'upload#picture', :as => :picture
+
+  #resources :pictures
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -9,6 +17,11 @@ Hotornot::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
+  #match 'pictures/new' => 'upload#get', :as => :get
+  #match 'pictures' => 'upload#save', :conditions => {:method => :post}, :as => :save
+  #match 'pictures/:id' => 'upload#show', :as => :picture
+  
+  #match 'pictures', :controller => 'upload', :action => 'save', :conditions => { :method => :post}
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
@@ -49,6 +62,8 @@ Hotornot::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
+  
+  root :to => "upload#get"
 
   # See how all your routes lay out with "rake routes"
 
